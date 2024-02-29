@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+  a.float-end.me-5.fs-3#logoutLink(href="/logout") Log out
+  h1.mt-5.text-center= title
+  form.mt-3.d-flex.flex-column.gap-3.align-items-center.justify-content-center(method="POST")
+    div.form-group.d-flex.flex-column.col-md-6.col-12.mx-auto
+      label.text-center(for="msgTitle") Title:
+      input#msgTitle.p-2(name="msgTitle" type="text" required maxlength="50" autocomplete="off")
+    div.form-group.d-flex.flex-column.col-md-6.col-12.mx-auto
+      label.text-center(for="messageField") Message:
+      textarea#messageField.p-2(name="messageField", cols="30", rows="10", maxlength="500" autocomplete="off")
+    button.btn.btn-outline-primary.mx-auto(type="submit") Submit
+
+    if errors 
+      ul.mt-3
+        for error in errors
+          li.text-danger= error.msg
+

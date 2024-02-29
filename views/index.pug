@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  if currentUser
+    p.display-5.mt-3.ps-2.text-center.mb-3 Welcome, #{currentUser.firstname}
+    a.float-end.fs-4#logoutLink(href="/logout") Log out
+  else 
+    p.display-5.text-center.mt-3.mb-0 Messaging board app
+      p.fs-4.text-center.mt-0.text-muted(style="user-select: none;") #[i Log in to post a message and see who is posting]
+
+  for message in messages 
+    .messageContainer.col-md-8.col-11.mx-auto.mb-5.position-relative
+      h3= message.title 
+      p= message.message
+      .msgFooter.w-100.d-flex.justify-content-between
+        if user && user.isMember
+          p.text-muted #[i #{message.user.username}]
+          p.text-muted #[i #{message.timestamp}]
+        else 
+          p.text-muted #[i (username)]
+          p.text-muted #[i (date)]
+      if user && user.isAdmin
+        a.btn.btn-outline-danger.w-100(href=`/delete_post/${message._id}`) Delete post
+
+  

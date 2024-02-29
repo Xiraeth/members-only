@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+  if currentUser 
+    a.float-end.me-5.fs-3#logoutLink(href="/logout") Log out
+  div.formContainer
+    form(method="POST").d-flex.flex-column.align-items-center.col-md-3.col
+      h1.text-center= title 
+      div.form-group.mb-3.w-100
+        label(for="username") Username:
+        input#username.form-control(type="text" autofocus required placeholder="Username" autocomplete="off" name="username")
+      div.form-group.mb-3.w-100
+        label(for="password") Password:
+        input#password.form-control(type="password" required placeholder="First name" autocomplete="off" name="password")
+      button.btn.btn-outline-primary(type="submit") Submit
+    if error 
+      p.text-danger.mt-3= error
