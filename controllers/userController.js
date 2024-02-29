@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const Message = require("../models/message");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
