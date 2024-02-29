@@ -20,6 +20,7 @@ const createMsgRouter = require("./routes/createMsg");
 const adminRouter = require("./routes/admin");
 const deletePostRouter = require("./routes/deletePost");
 require("dotenv").config();
+
 const User = require("./models/user");
 
 const app = express();
