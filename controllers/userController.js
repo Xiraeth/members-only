@@ -89,7 +89,7 @@ exports.update_member_status = [
   body("secretPhrase")
     .trim()
     .custom(async (value, { req }) => {
-      if (value !== process.env.SECRET_PHRASE) {
+      if (value.toLowerCase() !== process.env.SECRET_PHRASE) {
         throw new Error("That is not the secret phrase. Try again.");
       }
       return true;
@@ -122,7 +122,7 @@ exports.user_admin_post = [
   body("secretPhrase")
     .trim()
     .custom(async (value, { req }) => {
-      if (value !== process.env.ADMIN_SECRET_PHRASE) {
+      if (value.toLowerCase() !== process.env.ADMIN_SECRET_PHRASE) {
         throw new Error("That is not the secret phrase. Try again.");
       }
       return true;

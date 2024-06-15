@@ -3,7 +3,7 @@ extends layout
 block content 
   if currentUser 
     a.float-end.me-5.fs-3#logoutLink(href="/logout") Log out
-  .formContainer
+  div.formContainer
     form(method="POST").d-flex.flex-column.align-items-center.col-md-3.col
       h1.text-center= title 
       div.form-group.mb-3.w-100
